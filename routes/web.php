@@ -24,6 +24,7 @@ Route::get('/', function () {
 Route::get('/', 'LoginController@index')->name('login')->middleware('guest');
 Route::post('/login', 'LoginController@login');
 Route::get('/register', 'RegisterController@index');
+Route::post('/register/actregister', 'RegisterController@actregister');
 
 Route::get('/logout', 'LoginController@logout');
 

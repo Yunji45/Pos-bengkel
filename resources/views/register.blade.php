@@ -28,20 +28,24 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Silahkan Daftar Terlebih Dahulu</p>
 
-      <form action="" method="post">
+      <form action="/register/actregister" method="post">
         @csrf
-        <div class="input-group mb-3">
-            <label for="name">Nama</label>
-            <input class="form-control" type="text" name="name" value="{{ old('name')}}">
-        </div>
-        <div class="input-group mb-3">
-            <label for="email">Email</label>
-            <input class="form-control" type="text" name="email" value="{{ old('email')}}">
-        </div>
-        <div class="input-group mb-3">
-            <label for="password">Password</label>
-            <input class="form-control" type="text" name="password" value="{{ old('password')}}">
-        </div>
+        <div class="form-group">
+                    <label><i class="fa fa-envelope"></i> Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Email" required="">
+                </div>
+                <div class="form-group">
+                    <label><i class="fa fa-user"></i> Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Name" required="">
+                </div>
+                <div class="form-group">
+                    <label><i class="fa fa-key"></i> Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                </div>
+                <div class="form-group">
+                    <label><i class="fa fa-address-book"></i> Role</label>
+                    <input type="text" name="role" class="form-control" value="customer" readonly>
+                </div>
 
         <div class="row justify-content-end">
           <div class="col-4">
