@@ -89,5 +89,5 @@ Route::group(['middleware' => ['auth','check.role:kasir,admin']], function() {
 });
 
 Route::group(['middleware'=>['auth','check.role:customer']],function (){
-    
+    Route::get('/customer', 'CustomerController@index')->name('home-customer');
 });
