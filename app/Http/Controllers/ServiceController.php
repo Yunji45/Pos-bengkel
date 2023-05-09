@@ -27,7 +27,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Service';
+        $supplier = Supplier::all();
+        return view('serviceses.create', compact('title','supplier'));
     }
 
     /**
@@ -38,7 +40,31 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'barcode' => 'required',
+            'nama' => 'required',
+            'harga_beli' => 'required',
+            'harga_jual' => 'required',
+            'profit' => 'required',
+
+        ],
+        [
+            'barcode' => 'barcode tidak boleh kosong',
+            'nama' => 'nama tidak boleh kosong',
+            'harga_beli' => 'harga wajib di isi',
+            'harga_jual' => 'harga wajib ada',
+            'profit' => 'profit sudah terisi',
+        ]);
+
+        $service = new service;
+        $service->barcode = $request->barcode;
+        $service->nama = $request->nama;
+        $service->harga_beli = $request->harga_beli;
+        $service->harga_jual = $request->harga_jual;
+        $service->profit = $request->profit;
+        $service->save();
+        // service::create($request->all());
+        return redirect('/jasa-service')->with('Success','Data Berhasil Ditambahkan');
     }
 
     /**
@@ -60,7 +86,9 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = 'Service';
+        $server = service::find($id);
+        return view('serviceses.edit',compact('title', 'server'));
     }
 
     /**
@@ -72,7 +100,14 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $server = service::find($id);
+        $server->barcode = $request->barcode;
+        $server->nama = $request->nama;
+        $server->harga_beli = $request->harga_beli;
+        $server->harga_jual = $request->harga_jual;
+        $server->profit = $request->profit;
+        $server->save();
+        return redirect ('/jasa-service')->with('Success','Data Berhasil di Update');
     }
 
     /**
@@ -83,6 +118,8 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $server = service::find($id);
+        $server->delete();
+        return redirect('/jasa-service')->with('Success', 'Data Berhasil Dihapus');
     }
 }

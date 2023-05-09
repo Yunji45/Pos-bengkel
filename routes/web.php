@@ -46,6 +46,11 @@ Route::group(['middleware' => ['auth', 'check.role:admin']], function() {
     Route::post('/supplier/import', 'BarangController@import');
 
     Route::get('/jasa-service', 'ServiceController@index')->name('service');
+    Route::get('/jasa/create', 'ServiceController@create')->name('create');
+    Route::post('/jasa/store', 'ServiceController@store')->name('store');
+    Route::get('/jasa/{id}/edit', 'ServiceController@edit')->name('edit');
+    Route::put('/jasa/update/{id}', 'ServiceController@update')->name('update');
+    Route::get('/jasa/{id}/delete', 'ServiceController@destroy')->name('hapus');
 
     Route::get('/user', 'UserController@index');
     Route::post('/user', 'UserController@store');

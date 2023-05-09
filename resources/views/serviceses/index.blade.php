@@ -27,7 +27,7 @@
               <div class="card-header">
                 <h3 class="card-title">Data {{ $title }}</h3>
                 <div class="card-tools">
-                <a href="/barang/create" class="btn btn-primary">
+                <a href="/jasa/create" class="btn btn-primary">
                         <i class="fas fa-plus"></i> Tambah Data {{ $title }}
                 </a>
                 <button type="button" class="btn btn-success" data-toggle="modal" 
@@ -41,9 +41,9 @@
                   <thead class="bg-primary">                  
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Supplier</th>
                       <th>Barcode</th>
                       <th>Nama</th>
+                      <th>Harga Beli</th>
                       <th>Harga Jual</th>
                       <th>Profit</th>
                       <th>Aksi</th>
@@ -57,16 +57,16 @@
                     @foreach ($service as $item)
                     <tr>
                       <td>{{$no++}}</td>
-                      <td>{{$item->supplier->nama}}</td>
                       <td>{{$item->barcode}}</td>
                       <td>{{$item->nama}}</td>
+                      <td>{{ "Rp. ". number_format($item->harga_beli, 0, ',', '.') }}</td>
                       <td>{{ "Rp. ". number_format($item->harga_jual, 0, ',', '.') }}</td>
                       <td>{{ "Rp. ". number_format($item->profit, 0, ',', '.') }}</td>
                       <td>
-                        <a href=""
+                        <a href="/jasa/{{$item->id}}/edit"
                         class="btn btn-warning text-white btn-sm"><i class="fas fa-edit"></i>
                         Edit</a>
-                        <a href="" 
+                        <a href="/jasa/{{$item->id}}/delete" 
                         onclick="return confirm('Yakin akan dihapus?')" 
                         class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Hapus</a>
                       </td>
