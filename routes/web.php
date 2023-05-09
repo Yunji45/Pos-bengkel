@@ -45,6 +45,8 @@ Route::group(['middleware' => ['auth', 'check.role:admin']], function() {
     Route::get('/barang/{id}/destroy', 'BarangController@destroy');
     Route::post('/supplier/import', 'BarangController@import');
 
+    Route::get('/jasa-service', 'ServiceController@index')->name('service');
+
     Route::get('/user', 'UserController@index');
     Route::post('/user', 'UserController@store');
     Route::post('/user/{id}/update', 'UserController@update');

@@ -149,10 +149,21 @@
             </a>
               </li>
 
+              </li>
+              <li class="nav-item">
+            <a href="/jasa-service" class="nav-link {{ request()->segment(1) == 'services' ? 'active' : ''}}">
+              <i class="nav-icon fas fa-wrench"></i>
+              <p>
+                Service
+              </p>
+            </a>
+              </li>
+
+
 
               <li class="nav-item">
             <a href="/akun" class="nav-link {{ request()->segment(1) == 'akun' ? 'active' : ''}}">
-              <i class="nav-icon fas fa-wrench"></i>
+              <i class="nav-icon fas fa-user-astronaut"></i>
               <p>
                 Master Akun
               </p>
