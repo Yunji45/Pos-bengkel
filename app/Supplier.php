@@ -13,4 +13,9 @@ class Supplier extends Model
     {
         return $this->hasMany(Barang::class);
     }
+
+    public function service()
+    {
+        return $this->hasMany(service::class);
+    }
 }
