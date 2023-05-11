@@ -18,7 +18,7 @@ class BarangController extends Controller
     public function index()
     {
         $title = 'Barang';
-        $barang = Barang:: orderBy('id', 'asc')->get();
+        $barang = Barang:: where('type','produk')->orderBy('id', 'asc')->get();
         return view('barang.index', compact('title', 'barang'));
     }
 
@@ -82,10 +82,11 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         $barang = Barang::find($id);
-        $barang->supplier_id = $request->supplier_id;
+        // $barang->supplier_id = $request->supplier_id;
         $barang->barcode = $request->barcode;
         $barang->nama = $request->nama;
-        $barang->satuan = $request->satuan;
+        $barang->type= 'produk';
+        // $barang->satuan = $request->satuan;
         $barang->stok = $request->stok;
         $barang->harga_beli = $request->harga_beli;
         $barang->harga_jual = $request->harga_jual;

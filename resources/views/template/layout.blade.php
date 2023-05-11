@@ -131,7 +131,7 @@
             </a>
     
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
             <a href="/supplier" class="nav-link {{ request()->segment(1) == 'customer' ? 'active' : ''}}">
               <i class="nav-icon fas fa-truck"></i>
               <p>
@@ -139,7 +139,7 @@
               </p>
             </a>
     
-              </li>
+              </li> -->
               <li class="nav-item">
             <a href="/barang" class="nav-link {{ request()->segment(1) == 'barang' ? 'active' : ''}}">
               <i class="nav-icon fas fa-shopping-cart"></i>
@@ -193,7 +193,7 @@
 
             <a href="/jurnal" 
               class="nav-link {{ request()->segment(1) == 'jurnal' ? 'active' : ''}}">
-              <i class="nav-icon fas fa-paper-plane"></i>
+              <i class="nav-icon fas fa-book"></i>
               <p>
                 Jurnal Umum
               </p>

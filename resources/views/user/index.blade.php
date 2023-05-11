@@ -95,11 +95,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/user" method="post">
+        <form action="/user-create" method="post">
             @csrf
             <div class="form-group">
                     <label for="name">Nama</label>
-                    <input type="text"  name="name" class="form-control" id="name" required>
+                    <input type="text"  name="name" class="form-control" id="name" required value="">
             </div>
             <div class="form-group">
                     <label for="email">Email</label>
@@ -111,7 +111,12 @@
             </div>
             <div class="form-group">
                     <label for="role">Role</label>
-                    <input type="text" name="role"class="form-control" id="role" required>
+                    <select name="role" id="role" class="form-control">
+                        <option value="kasir">Kasir</option>
+                        <option value="customer">Customer</option>
+                        
+                    </select>
+
             </div>
 
       </div>
@@ -146,7 +151,11 @@
             </div>
             <div class="form-group">
                     <label for="role">Role</label>
-                    <input type="text" name="role"class="form-control" id="role" value="{{old('role')}}" required>
+                    <select name="role" id="role" class="form-control">
+                        <option value="kasir">Kasir</option>
+                        <option value="customer">Customer</option>
+                        
+                    </select>
             </div>
 
        

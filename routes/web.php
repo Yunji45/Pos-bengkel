@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth', 'check.role:admin']], function() {
     Route::get('/jasa/{id}/delete', 'ServiceController@destroy')->name('hapus');
 
     Route::get('/user', 'UserController@index');
-    Route::post('/user', 'UserController@store');
+    Route::post('/user-create', 'UserController@store');
     Route::post('/user/{id}/update', 'UserController@update');
     Route::get('/user/{id}/destroy', 'UserController@destroy');
 

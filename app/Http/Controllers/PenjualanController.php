@@ -22,8 +22,7 @@ class PenjualanController extends Controller
         $title = 'Penjualan';
         $penjualan = DB::table('penjualan')
             ->join('barang', 'penjualan.nama', '=', 'barang.nama')
-            ->join('services','penjualan.nama','=', 'services.nama')
-            ->select('penjualan.*', 'barang.*','services.*', 'penjualan.id as id_penjualan')
+            ->select('penjualan.*', 'barang.*', 'penjualan.id as id_penjualan')
             ->where('penjualan.kode_penjualan', $kode_penjualan)
             ->get();
         return view('penjualan.index', compact('title', 'penjualan'));
@@ -49,13 +48,12 @@ class PenjualanController extends Controller
     public function store(Request $request)
     {
         $barang = Barang::where('nama', $request->nama)->first();
-        $service = service::where('nama', $request->nama)->first();
         $penjualan = new Penjualan;
         $penjualan->user_id = Auth::user()->id;
         $penjualan->kode_penjualan = $request->kode_penjualan;
         $penjualan->nama = $request->nama;
         $penjualan->qty = 1;
-        $penjualan->total_harga = DB::raw("total_harga + $barang->harga_jual + $service->harga_jual")*1;
+        $penjualan->total_harga =$barang->harga_jual * 1;
         $penjualan->save();
 
         return redirect('/penjualan/' . $request->kode_penjualan);
@@ -112,7 +110,6 @@ class PenjualanController extends Controller
     {
         $penjualan = DB::table('penjualan')->where('id', $id_penjualan)->first();
         $barang = DB::table('barang')->where('nama', $penjualan->nama)->first();
-        $service = DB::table('services')->where('nama',$penjualan->nama)->first();
 
         $update_stok_barang = DB::table('barang')
             ->where('nama', $penjualan->nama)
@@ -122,7 +119,7 @@ class PenjualanController extends Controller
             ->where('id', $penjualan->id)
             ->update([
                 'qty' => DB::raw('qty + 1'),
-                'total_harga' => DB::raw("total_harga + $barang->harga_jual + $service->harga_jual"),
+                'total_harga' => DB::raw("total_harga + $barang->harga_jual"),
             ]);
 
         return redirect('/penjualan/' . $penjualan->kode_penjualan);
@@ -148,7 +145,7 @@ class PenjualanController extends Controller
                 ->where('id', $penjualan->id)
                 ->update([
                     'qty' => DB::raw('qty - 1'),
-                    'total_harga' => DB::raw("total_harga - $barang->harga_jual - $service->harga_jual"),
+                    'total_harga' => DB::raw("total_harga - $barang->harga_jual"),
                 ]);
 
             return redirect('/penjualan/' . $penjualan->kode_penjualan);
@@ -183,8 +180,7 @@ class PenjualanController extends Controller
     {
         $penjualan = DB::table('penjualan')
             ->join('barang', 'penjualan.nama', '=', 'barang.nama')
-            ->join('services', 'penjualan.nama','=', 'services.nama')
-            ->select('penjualan.*', 'barang.*', 'services.*','penjualan.id as id_penjualan')
+            ->select('penjualan.*', 'barang.*', 'penjualan.id as id_penjualan')
             ->where('penjualan.kode_penjualan', $kode_penjualan)
             ->get();
         $detail_penjualan = Detail_penjualan::where('kode_penjualan', $kode_penjualan)->first();

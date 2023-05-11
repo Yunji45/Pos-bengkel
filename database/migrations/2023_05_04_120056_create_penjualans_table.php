@@ -19,6 +19,7 @@ class CreatePenjualansTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('kode_penjualan', 100);
             $table->string('nama', 100);
+            $table->enum('type',['produk','service']);
             $table->string('qty', 100);
             $table->string('total_harga', 100);
             $table->timestamps();

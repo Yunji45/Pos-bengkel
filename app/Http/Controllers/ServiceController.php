@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\service;
+use App\Barang;
 use App\Supplier;
 
 class ServiceController extends Controller
@@ -16,7 +16,7 @@ class ServiceController extends Controller
     public function index()
     {
         $title = 'Service';
-        $service = service:: orderBy('id', 'asc')->get();
+        $service = Barang::where('type','service')-> orderBy('id', 'asc')->get();
         return view('serviceses.index', compact('title', 'service'));
     }
 
@@ -56,9 +56,11 @@ class ServiceController extends Controller
             'profit' => 'profit sudah terisi',
         ]);
 
-        $service = new service;
+        $service = new Barang;
         $service->barcode = $request->barcode;
         $service->nama = $request->nama;
+        $service->type = 'service';
+        $service->stok = null;
         $service->harga_beli = $request->harga_beli;
         $service->harga_jual = $request->harga_jual;
         $service->profit = $request->profit;
@@ -87,7 +89,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $title = 'Service';
-        $server = service::find($id);
+        $server = Barang::find($id);
         return view('serviceses.edit',compact('title', 'server'));
     }
 
@@ -100,9 +102,11 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $server = service::find($id);
+        $server = Barang::find($id);
         $server->barcode = $request->barcode;
         $server->nama = $request->nama;
+        $server->type = 'service';
+        $server->stok = null;
         $server->harga_beli = $request->harga_beli;
         $server->harga_jual = $request->harga_jual;
         $server->profit = $request->profit;

@@ -41,10 +41,8 @@
                   <thead class="bg-primary">                  
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Supplier</th>
                       <th>Barcode</th>
                       <th>Nama</th>
-                      <th>Satuan</th>
                       <th>Stok</th>
                       <th>Harga Beli</th>
                       <th>Harga Jual</th>
@@ -60,10 +58,8 @@
                     @foreach ($barang as $item)
                     <tr>
                       <td>{{$no++}}</td>
-                      <td>{{$item->supplier->nama}}</td>
                       <td>{{$item->barcode}}</td>
                       <td>{{$item->nama}}</td>
-                      <td>{{$item->satuan}}</td>
                       <td>{{$item->stok}}</td>
                       <td>{{ "Rp. ". number_format($item->harga_beli, 0, ',', '.') }}</td>
                       <td>{{ "Rp. ". number_format($item->harga_jual, 0, ',', '.') }}</td>

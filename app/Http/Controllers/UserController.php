@@ -20,6 +20,12 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    //  public function __construct()
+    //  {
+    //      $this->middleware('guest');
+    //  }
+ 
+
     public function home()
     {
         return view('dashboard');
@@ -49,9 +55,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+        $title = 'User';
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
             'email' => 'required',
             'role' => 'required',
             'password' => 'required',
