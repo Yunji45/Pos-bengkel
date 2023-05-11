@@ -67,7 +67,7 @@
                   <span id="supplier">0</span>
                 </h3>
 
-                <p>Total Supplier</p>
+                <p>Total Penjualan</p>
               </div>
               <div class="icon">
                 <i class="fas fa-truck"></i>
@@ -92,6 +92,17 @@
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          <div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <canvas id="canvas" height="280" width="600"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
  
     </section>
@@ -165,4 +176,42 @@
     });
   }, 1000);
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+<script>
+    var year = <?php echo $bulan; ?>;
+    var user = <?php echo $user; ?>;
+    var barChartData = {
+        labels: year,
+        datasets: [{
+            label: 'Penjualan',
+            backgroundColor: "blue",
+            data: user
+        }]
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                        borderColor: '#c1c1c1',
+                        borderSkipped: 'bottom'
+                    }
+                },
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Statistik penjualan'
+                }
+            }
+        });
+    };
+
+</script>
+
 @endsection

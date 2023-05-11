@@ -42,10 +42,6 @@
                     <label><i class="fa fa-key"></i> Password</label>
                     <input type="password" name="password" class="form-control" placeholder="Password" required="">
                 </div>
-                <div class="form-group">
-                    <label><i class="fa fa-address-book"></i> Role</label>
-                    <input type="text" name="role" class="form-control" value="customer" readonly>
-                </div>
 
         <div class="row justify-content-end">
           <div class="col-4">

@@ -31,22 +31,19 @@ class RegisterController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'email' => 'required',
-            'role' => 'required',
             'password' => 'required',
 
         ],
         [
             'name' => 'nama tidak boleh kosong',
             'email' => 'email tidak boleh kosong',
-            'role' => 'role wajib di isi',
             'password' => 'password wajib ada',
         ]);
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash :: make($request->password);
-        $user->role = $request->role;
+        $user->role = 'customer';
         $user->save ();
         return redirect('/')->with('Berhasil', 'Silahkan login menggunakan email dan password');
     }
