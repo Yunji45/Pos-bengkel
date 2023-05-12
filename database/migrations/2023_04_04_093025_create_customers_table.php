@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class CreateCustomersTable extends Migration
 {
@@ -15,9 +16,14 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customer', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('no_antrian');
             $table->string('nama', 100);
             $table->string('alamat', 100);
             $table->string('no_telp', 100);
+            $table->boolean('is_call')->default(false);
+            $table->date('tanggal_antrian')->default(Carbon::now());
             $table->timestamps();
         });
     }

@@ -15,8 +15,7 @@ class CustomerController extends Controller
     public function index()
     {
         $title = 'Customer';
-        $customer = Customer::orderBy('id', 'asc')->get();
-        return view ('customer.index', compact ('title', 'customer'));
+        return view ('customer.index', compact ('title'));
     }
 
     /**
