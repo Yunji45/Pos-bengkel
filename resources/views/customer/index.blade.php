@@ -15,35 +15,51 @@
             @endif
             @auth
                 <!-- Button Modal -->
-                <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal"  data-bs-target="#createAntrian">
-                    <i class="bi bi-file-plus me-1"></i>Ambil Antrian
-                </button>
+                <a href="/create-antrian" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Ambil Antrian
+                </a>
             @else
                 <a href="/login" type="button" class="btn btn-primary my-3">
                     <i class="bi bi-file-plus me-1"></i>Login Untuk Ambil Antrian
                 </a>
             @endauth
-    
+            @if($jumlah_antrian > 0)
             <div class="row">
                 <div class="col">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="table_id">
                             <thead>
                               <tr style="text-align: center">
-                                <th scope="col">No</th>
                                 <th scope="col">No Antrian</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">No.Telepon</th>
-                                <th scope="col">Alamat</th>
-                                <th scope="col">Tgl. Antrian</th>
+                                <th scope="col">Waktu Antrian</th>
+                                <th scope="col">Cetak</th>
                               </tr>
                             </thead>
                             <tbody>
+                                @foreach ($data as $item)
+                                    <tr style="text-align: center">
+                                        <td>{{ $item->no_antrian }}</td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->no_telp }}</td>
+                                        <td>{{ $item->created_at }}</td>
+                                        <td>
+                                            <a class="btn btn-success" a href="/cetak" target="_blank"><i class="bi bi-printer"></i></a>
+
+
+                                        </td>
+                                    </tr>
+                                @endforeach
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            @else
+            <!-- jangan tampilkan -->
+            @endif
         </div>
       </section><!-- End Hero -->
 
@@ -52,62 +68,7 @@
 
     </div>
     <!-- Modal -->
-<div wire:ignore.self class="modal fade" id="createAntrian" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Form Ambil Antrian</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click="close_modal" aria-label="Close"></button>
-        </div>
-
-        <form wire:submit.prevent="save">
-            <div class="modal-body">
-              <div class="mb-3">
-                <label>Tanggal Antrian</label>
-                <input type="text" id="tanggal_antrian" class="form-control" value=""readonly>
-                @error('tanggal_antrian') <span class="text-danger">{{ $message }}</span> @enderror
-            </div>
-              <div class="mb-3">
-                <label>Nomor Antrian</label>
-                <input type="string" id="no_antrian" class="form-control" value="" readonly>
-                @error('no_antrian') <span class="text-danger">{{ $message }}</span> @enderror
-            </div>
-            <div class="mb-3">
-                <label>Nama Lengkap</label>
-                <input type="text" id="nama" class="form-control">
-                @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
-            </div>
-            <div class="mb-3">
-                <label>Alamat</label>
-                <textarea class="form-control" wire:model="alamat" cols="20"></textarea>
-                @error('alamat') <span class="text-danger">{{ $message }}</span> @enderror
-            </div>
-            <div class="mb-3">
-                <label>Nomor HP</label>
-                <input type="text" id="no_hp" class="form-control">
-                @error('no_hp') <span class="text-danger">{{ $message }}</span> @enderror
-            </div> 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" wire:click="close_modal" >Keluar</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
-            </div>
-        </form>
-
-      </div>
-    </div>
-  </div>
 @endsection
 
-@section('script')
-    <script>
-        window.addEventListener('closeModal', event => {
-            $('#createAntrian').modal('hide')
-            $('#editAntrian').modal('hide')
-            $('#deleteAntrian').modal('hide')
-        })
-    
-    </script>
-@endsection
 
 @include('partials.footer')

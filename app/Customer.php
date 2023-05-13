@@ -13,11 +13,10 @@ class Customer extends Model
         'nama', 
         'alamat', 
         'no_telp',
-        'is_call',
-        'tanggal_antrian'
+        'status',
     ];
 
-    public function barang()
+    public function service()
     {
         return $this->belongsTo(User::class);
     }

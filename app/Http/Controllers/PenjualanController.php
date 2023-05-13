@@ -135,7 +135,6 @@ class PenjualanController extends Controller
             </script>";
         } else {
             $barang = DB::table('barang')->where('nama', $penjualan->nama)->first();
-            $service = DB::table('services')->where('nama', $penjualan->nama)->first();
 
             $update_stok_barang = DB::table('barang')
                 ->where('nama', $penjualan->nama)

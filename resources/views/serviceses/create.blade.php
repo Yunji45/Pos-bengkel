@@ -40,7 +40,7 @@
                   </div>
                   <div class="form-group">
                     <label for="harga_beli">Harga Beli</label>
-                    <input type="text" name="harga_beli" class="form-control" id="harga_beli" required>
+                    <input type="text" name="harga_beli" class="form-control" id="harga_beli" required placeholder="input 0 saja">
                   </div>
                   <div class="form-group">
                     <label for="harga_jual">Harga Jual</label>
@@ -73,7 +73,7 @@
         let harga_jual = document.getElementById('harga_jual').value;
         let profit = document.getElementById('profit');
 
-        profit.value = parseInt(harga_jual) - parseInt(harga_beli);
+        profit.value = parseInt(harga_jual)-parseInt(harga_beli);
     }
 </script>
 @endsection

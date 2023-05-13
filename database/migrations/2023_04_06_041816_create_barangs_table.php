@@ -22,8 +22,8 @@ class CreateBarangsTable extends Migration
             $table->enum('type',['produk','service']);
             // $table->enum('satuan', ['pcs', 'pck']);
             $table->integer('stok')->nullable();
-            $table->integer('harga_beli');
-            $table->integer('harga_jual');
+            $table->integer('harga_beli')->nullable();
+            $table->integer('harga_jual')->nullable();
             $table->integer('profit');
             $table->timestamps();
         });

@@ -61,7 +61,7 @@ class ServiceController extends Controller
         $service->nama = $request->nama;
         $service->type = 'service';
         $service->stok = null;
-        $service->harga_beli = $request->harga_beli;
+        $service->harga_beli = 0;
         $service->harga_jual = $request->harga_jual;
         $service->profit = $request->profit;
         $service->save();
@@ -107,7 +107,7 @@ class ServiceController extends Controller
         $server->nama = $request->nama;
         $server->type = 'service';
         $server->stok = null;
-        $server->harga_beli = $request->harga_beli;
+        $server->harga_beli = 0;
         $server->harga_jual = $request->harga_jual;
         $server->profit = $request->profit;
         $server->save();

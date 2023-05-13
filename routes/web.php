@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::namespace('App\Http\Controllers')->middleware('guest')->group(function () {
+// Route::namespace('App\Http\Controllers')->middleware('guest')->group(function () {
    
-    Route::get('/form',[TestController::class,'index'])->name('index');   
-});
+//     Route::get('/form',[TestController::class,'index'])->name('index');   
+// });
 
 Route::get('/', function () {
     return view('welcome');
@@ -96,5 +96,8 @@ Route::group(['middleware' => ['auth','check.role:kasir,admin']], function() {
 });
 
 Route::group(['middleware'=>['auth','check.role:customer']],function (){
-    Route::get('/customer', 'CustomerController@index')->name('home-customer');
+    Route::get('/customer', 'CustomerController@index');
+    Route::post('/act', 'CustomerController@store');
+    Route::get('/create-antrian','CustomerController@create');
+    Route::get('/cetak','CustomerController@cetakantrian');
 });

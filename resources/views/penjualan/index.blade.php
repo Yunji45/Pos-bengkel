@@ -30,27 +30,6 @@
                 <strong>No Invoice: </strong>{{ request()->segment(2) }}
                 </div>
               <div class="card-body">
-              <nav>
-                      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                          <a
-                              class="nav-item nav-link active"
-                              id="nav-services-tab"
-                              data-toggle="tab"
-                              href="#nav-services"
-                              role="tab"
-                              aria-controls="nav-services"
-                              aria-selected="true">Services</a>
-                          <a
-                              class="nav-item nav-link"
-                              id="nav-sparepart-tab"
-                              data-toggle="tab"
-                              href="#datatable"
-                              role="tab"
-                              aria-controls="nav-sparepart"
-                              aria-selected="false">Sparepart</a>
-                      </div>
-                  </nav>
-
               <table class="table table-bordered table-striped table-hover table-sm" id="datatable">
                   <thead class="bg-primary">                  
                     <tr>

@@ -43,7 +43,7 @@
                       <th style="width: 10px">#</th>
                       <th>Barcode</th>
                       <th>Nama</th>
-                      <th>Harga Beli</th>
+                      <th>Type</th>
                       <th>Harga Jual</th>
                       <th>Profit</th>
                       <th>Aksi</th>
@@ -59,7 +59,7 @@
                       <td>{{$no++}}</td>
                       <td>{{$item->barcode}}</td>
                       <td>{{$item->nama}}</td>
-                      <td>{{ "Rp. ". number_format($item->harga_beli, 0, ',', '.') }}</td>
+                      <td>{{$item->type}}</td>
                       <td>{{ "Rp. ". number_format($item->harga_jual, 0, ',', '.') }}</td>
                       <td>{{ "Rp. ". number_format($item->profit, 0, ',', '.') }}</td>
                       <td>

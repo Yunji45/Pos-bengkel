@@ -5,7 +5,6 @@
     <div class="container d-flex justify-content-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>
-        <i class="bi bi-phone"></i> +1 5589 55488 55
       </div>
     </div>
   </div>
@@ -32,7 +31,6 @@
               @if (auth()->user()->roles === 'admin')
                 <li><a class="dropdown-item" href="/dashboard">Dashboard </a></li>
               @else
-                <li><a class="dropdown-item" href="/customer">Menu Antrian </a></li>
               @endif    
               
                 <form action="/logout" method="get">

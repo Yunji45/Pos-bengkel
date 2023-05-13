@@ -22,8 +22,7 @@ class CreateCustomersTable extends Migration
             $table->string('nama', 100);
             $table->string('alamat', 100);
             $table->string('no_telp', 100);
-            $table->boolean('is_call')->default(false);
-            $table->date('tanggal_antrian')->default(Carbon::now());
+            $table->string('status')->default('menunggu');
             $table->timestamps();
         });
     }
