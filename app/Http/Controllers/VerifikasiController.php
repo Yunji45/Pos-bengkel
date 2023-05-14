@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Customer;
 
 class VerifikasiController extends Controller
 {
@@ -13,7 +14,9 @@ class VerifikasiController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'Antrian';
+        $data = Customer::all();
+        return view ('antrian.index',compact('title', 'data'));
     }
 
     /**
@@ -81,4 +84,21 @@ class VerifikasiController extends Controller
     {
         //
     }
+
+    public function selesaiAntrian(Request $request, $id)
+    {
+        $antrian = Customer::findOrFail($id); // mencari antrian berdasarkan id
+
+        // Ubah status antrian menjadi "selesai"
+        $antrian->status = 'selesai';
+        $antrian->save();
+
+        // Hapus antrian dari database
+        $antrian->delete();
+
+        // return $antrian;
+        return redirect('/antrian/home')
+                        ->with('success', 'Antrian selesai dan dihapus dari daftar antrian.');
+    }
+
 }

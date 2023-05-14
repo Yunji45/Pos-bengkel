@@ -158,8 +158,14 @@
               </p>
             </a>
               </li>
-
-
+              <li class="nav-item">
+            <a href="/antrian/home" class="nav-link {{ request()->segment(1) == 'customer' ? 'active' : ''}}">
+              <i class="nav-icon fas fa-child"></i>
+              <p>
+                Antrian
+              </p>
+            </a>
+              </li>
 
               <li class="nav-item">
             <a href="/akun" class="nav-link {{ request()->segment(1) == 'akun' ? 'active' : ''}}">

@@ -68,6 +68,9 @@ Route::group(['middleware' => ['auth', 'check.role:admin']], function() {
     Route::get('/jurnal/hapus/{id}', 'JurnalController@destroy');
     Route::get('/jurnalcetak/cetak_pdf', 'JurnalController@cetak_pdf');
 
+    Route::get('/antrian/home', 'VerifikasiController@index');
+    Route::get('/antrian/panggilan/{id}', 'VerifikasiController@selesaiAntrian');
+
 });
 
 Route::group(['middleware' => ['auth','check.role:kasir,admin']], function() {

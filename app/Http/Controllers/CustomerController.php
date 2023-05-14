@@ -18,9 +18,9 @@ class CustomerController extends Controller
     public function index()
     {
         $title = 'Customer';
-        $data = Customer::all();
-        $jumlah_antrian = Customer::where('status', 'menunggu')->count();
-        return view ('customer.index', compact ('title','data','jumlah_antrian'));
+        $antrian = auth::user();
+        $data = $antrian->service;
+        return view ('customer.index', compact ('title','data'));
     }
 
     /**
@@ -132,10 +132,14 @@ class CustomerController extends Controller
         $last_antrian = Customer::orderBy('id', 'desc')->first();
 
         // Menghasilkan nomor antrian baru dengan format AN-XXXXX
-        if ($last_antrian) {
-            $last_number = substr($last_antrian->no_antrian, 3);
-            $new_number = sprintf('%05d', intval($last_number) + 1);
+        if ($last_antrian ) {
+            // $last_number = substr($last_antrian->no_antrian, 0, 1);
+            // $new_number = sprintf('%05d', intval($last_number) + 1);
+            $new_number = (int) substr($last_antrian->no_antrian, 1);
+            $new_number +=1;
+            $this->no_antrian = $last_antrian . $new_number;
         } else {
+            // return redirect('/customer')->with('invalid', 'Data Antrian Gagal Di tambahkan');
             $new_number = '00001';
         }
 
@@ -143,31 +147,15 @@ class CustomerController extends Controller
 
     }
 
-    public function selesaiAntrian(Request $request, $id)
-    {
-        $antrian = Customer::findOrFail($id); // mencari antrian berdasarkan id
-
-        // Ubah status antrian menjadi "selesai"
-        $antrian->status = 'selesai';
-        $antrian->save();
-
-        // Hapus antrian dari database
-        $antrian->delete();
-
-        return $antrian;
-        // return redirect('/menu')
-        //                 ->with('success', 'Antrian selesai dan dihapus dari daftar antrian.');
-    }
 
     public function cetakantrian()
     {
         $title = 'Customer';
-        $data = Customer::all();
+        $antrian = auth::user();
+        $data = $antrian->service;
 
-        $export = PDF::loadview('customer.cetak', ['data' => $data]);
-        return $export ->download('customer.antrian.pdf', compact('data'));
+        $export = PDF::loadview('customer.cetak', ['data' => $data])->setPaper('A4', 'landscape');
+        return $export->stream();;
+        // return $export ->stream('customer.antrian.pdf', compact('data'));
     }
 }
-// $bendahara = User::with('userDetail')->where('role','Bendahara')->get();
-// $export = PDF::loadview('backend.pengguna.bendahara.laporan', ['bendahara' => $bendahara]);
-// return $export ->download('backend.pengguna.bendahara.index.pdf', compact('bendahara'));

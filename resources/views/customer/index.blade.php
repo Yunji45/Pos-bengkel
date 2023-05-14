@@ -23,7 +23,6 @@
                     <i class="bi bi-file-plus me-1"></i>Login Untuk Ambil Antrian
                 </a>
             @endauth
-            @if($jumlah_antrian > 0)
             <div class="row">
                 <div class="col">
                     <div class="table-responsive">
@@ -57,9 +56,6 @@
                     </div>
                 </div>
             </div>
-            @else
-            <!-- jangan tampilkan -->
-            @endif
         </div>
       </section><!-- End Hero -->
 
