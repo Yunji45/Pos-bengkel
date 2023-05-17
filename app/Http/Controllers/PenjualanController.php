@@ -48,7 +48,6 @@ class PenjualanController extends Controller
     public function store(Request $request)
     {
         $barang = Barang::where('nama', $request->nama)->first();
-    
             $penjualan = new Penjualan;
             $penjualan->user_id = Auth::user()->id;
             $penjualan->kode_penjualan = $request->kode_penjualan;
@@ -57,6 +56,8 @@ class PenjualanController extends Controller
             $penjualan->total_harga =$barang->harga_jual * 1;
             $penjualan->save();
 
+            $barang->stok -= 1;
+            $barang->save();
 
             return redirect('/penjualan/' . $request->kode_penjualan);
     }

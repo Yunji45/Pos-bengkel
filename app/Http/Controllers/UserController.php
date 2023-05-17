@@ -76,8 +76,8 @@ class UserController extends Controller
         $user->password = Hash :: make($request->password);
         $user->role = $request->role;
         $user->save ();
-        return redirect('/user',compact('user',$user))->with('success', 'Data User Berhasil Tersimpan');
-        // return $user;
+        // return redirect('/user',compact('user',$user))->with('success', 'Data User Berhasil Tersimpan');
+        return redirect()->to('/user')->with('success', 'Data Berhasil Di tambahkan');
     }
 
     /**
