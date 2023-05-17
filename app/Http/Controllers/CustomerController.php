@@ -60,7 +60,9 @@ class CustomerController extends Controller
         }
         $last_antrian = Customer::orderBy('no_antrian', 'desc')->first();
         $nomor_antrian = $last_antrian ? $last_antrian->no_antrian + 1 : 1;
-    
+        if ($nomor_antrian > 10) {
+            $nomor_antrian = 1;
+        }        
         // Buat antrian baru
         $antrian = new Customer;
         $antrian ->user_id = auth::user()->id;
@@ -76,7 +78,7 @@ class CustomerController extends Controller
         ->get();
 
         foreach ($antrians as $antrian) {
-        if ($antrian->no_antrian > $antrian->no_antrian + 1) {
+        if ($antrian->no_antrian > $nomor_antrian) {
             $antrian->no_antrian--;
             $antrian->save();
             }
