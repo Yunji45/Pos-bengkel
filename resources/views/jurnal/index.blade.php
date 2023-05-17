@@ -21,11 +21,11 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="no_hp">Tanggal Awal</label>
-                                    <input id="created_at" type="date" name="created_at" class="form-control">
+                                    <input id="tanggal_awal" type="date" name="tanggal_awal" class="form-control">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="no_hp">Tanggal Akhir</label>
-                                    <input id="updated_at" type="date" name="updated_at" class="form-control">
+                                    <input id="tanggal_akhir" type="date" name="tanggal_akhir" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-10">

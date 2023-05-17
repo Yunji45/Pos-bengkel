@@ -37,9 +37,6 @@
             $total_pembayaran2 = 0;
             @endphp
             @foreach ($laporan as $akn)
-            <!-- <tr>
- <td colspan="5">{{$akn->tgl_jurnal}}</td>
- </tr> -->
             @foreach ($laporan as $bb)
             <!-- pembuatan prulangan bersarang -->
             @if($loop->parent->first)
@@ -47,12 +44,12 @@
                 <td>{{$bb->created_at}}</td>
                 <td>{{$bb->kode_penjualan}} Kas</td>
                 <td>{{number_format($bb->total_harga)}}</td>
-                <td>{{number_format($bb->kredit)}}</td>
+                <td>0</td>
             </tr>
             <tr>
                 <td>{{$bb->created_at}}</td>
                 <td>{{$bb->kode_penjualan}} Penjualan {{$bb->type}}</td>
-                <td>{{number_format($bb->debet)}}</td>
+                <td>0</td>
                 <td>{{number_format($bb->total_harga)}}</td>
             </tr>
             <!-- hitung total debet dan kredit -->

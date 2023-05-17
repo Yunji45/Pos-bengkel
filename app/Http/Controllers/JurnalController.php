@@ -26,13 +26,14 @@ class JurnalController extends Controller
             $pdf = PDF::loadview('jurnal.cetak', ['laporan' => $bb, 'akun' => $akun])->setPaper('A4', 'landscape');
             return $pdf->stream();
         } elseif ($periode == 'periode') {
-            $tglawal = $request->get('tglawal');
-            $tglakhir = $request->get('tglakhir');
+            $tanggal_awal = $request->tanggal_awal . ' 00:00:00';
+            $tanggal_akhir = $request->tanggal_akhir . ' 23:59:59';
+            $tanggal1 = $request->tanggal_awal;
+            $tanggal2 = $request->tanggal_akhir;
             $akun = \App\Akun::All();
             $bb = DB::table('penjualan')
-                ->whereBetween('created_at', [$tglawal, $tglakhir])
-                ->orderby('created_at', 'ASC')
-                ->get();
+            ->whereBetween('penjualan.created_at', [$tanggal_awal, $tanggal_akhir])
+            ->get();
             $pdf = PDF::loadview('jurnal.cetak', ['laporan' => $bb, 'akun' => $akun])->setPaper('A4', 'landscape');
             return $pdf->stream();
         }
