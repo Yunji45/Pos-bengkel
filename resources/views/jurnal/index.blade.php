@@ -19,14 +19,14 @@
                                         <option value="periode">Per Periode</option>
                                     </select>
                                 </div>
-                                <div class="col-md-3">
+                                <!-- <div class="col-md-3">
                                     <label for="no_hp">Tanggal Awal</label>
-                                    <input id="tglawal" type="date" name="tglawal" class="form-control">
+                                    <input id="created_at" type="date" name="created_at" class="form-control">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="no_hp">Tanggal Akhir</label>
-                                    <input id="tglakhir" type="date" name="tglakhir" class="form-control">
-                                </div>
+                                    <input id="updated_at" type="date" name="updated_at" class="form-control">
+                                </div> -->
                             </div>
                             <div class="col-md-10">
                                 <input type="submit" class="btn btn-success btnsend" value="Cetak">

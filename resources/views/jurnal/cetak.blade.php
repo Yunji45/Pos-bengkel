@@ -44,15 +44,20 @@
             <!-- pembuatan prulangan bersarang -->
             @if($loop->parent->first)
             <tr>
-
-                <td>{{$bb->tgl_jurnal}}</td>
-                <td>{{$bb->no_jurnal}} {{$bb->keterangan}}</td>
-                <td>{{number_format($bb->debet)}}</td>
+                <td>{{$bb->created_at}}</td>
+                <td>{{$bb->kode_penjualan}} Kas</td>
+                <td>{{number_format($bb->total_harga)}}</td>
                 <td>{{number_format($bb->kredit)}}</td>
             </tr>
+            <tr>
+                <td>{{$bb->created_at}}</td>
+                <td>{{$bb->kode_penjualan}} Penjualan {{$bb->type}}</td>
+                <td>{{number_format($bb->debet)}}</td>
+                <td>{{number_format($bb->total_harga)}}</td>
+            </tr>
             <!-- hitung total debet dan kredit -->
-            {{$total_pembayaran1 += $bb->debet}};
-            {{$total_pembayaran2 += $bb->kredit}};
+            {{$total_pembayaran1 += $bb->total_harga}};
+            {{$total_pembayaran2 += $bb->total_harga}};
             @endif
 
             @endforeach

@@ -48,16 +48,17 @@ class PenjualanController extends Controller
     public function store(Request $request)
     {
         $barang = Barang::where('nama', $request->nama)->first();
-        $penjualan = new Penjualan;
-        $penjualan->user_id = Auth::user()->id;
-        $penjualan->kode_penjualan = $request->kode_penjualan;
-        $penjualan->nama = $request->nama;
-        $penjualan->qty = 1;
-        $penjualan->total_harga =$barang->harga_jual * 1;
-        $penjualan->save();
+    
+            $penjualan = new Penjualan;
+            $penjualan->user_id = Auth::user()->id;
+            $penjualan->kode_penjualan = $request->kode_penjualan;
+            $penjualan->nama = $request->nama;
+            $penjualan->qty = 1;
+            $penjualan->total_harga =$barang->harga_jual * 1;
+            $penjualan->save();
 
-        return redirect('/penjualan/' . $request->kode_penjualan);
-        
+
+            return redirect('/penjualan/' . $request->kode_penjualan);
     }
 
     /**
@@ -111,9 +112,10 @@ class PenjualanController extends Controller
         $penjualan = DB::table('penjualan')->where('id', $id_penjualan)->first();
         $barang = DB::table('barang')->where('nama', $penjualan->nama)->first();
 
-        $update_stok_barang = DB::table('barang')
+        $update_stok_barang= DB::table('barang')
             ->where('nama', $penjualan->nama)
-            ->update(['stok' => DB::raw('stok-1')]);
+            ->update(['stok' => DB::raw('stok - 1')]);
+
 
         $update_qty_penjualan = DB::table('penjualan')
             ->where('id', $penjualan->id)
