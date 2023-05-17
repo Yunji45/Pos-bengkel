@@ -52,6 +52,7 @@ class PenjualanController extends Controller
             $penjualan->user_id = Auth::user()->id;
             $penjualan->kode_penjualan = $request->kode_penjualan;
             $penjualan->nama = $request->nama;
+            $penjualan->type = $barang->type;
             $penjualan->qty = 1;
             $penjualan->total_harga =$barang->harga_jual * 1;
             $penjualan->save();
