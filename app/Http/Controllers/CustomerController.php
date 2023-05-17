@@ -76,12 +76,12 @@ class CustomerController extends Controller
         ->get();
 
         foreach ($antrians as $antrian) {
-        if ($antrian->no_antrian > $antrian->no_antrian - 1) {
+        if ($antrian->no_antrian > $antrian->no_antrian + 1) {
             $antrian->no_antrian--;
             $antrian->save();
             }
         }
-        $antrian->update_status();
+        // $antrian->update_status();
         return redirect('/customer')
                         ->with('success', 'Antrian berhasil ditambahkan.');
 
