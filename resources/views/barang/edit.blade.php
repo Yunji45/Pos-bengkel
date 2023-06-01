@@ -31,18 +31,6 @@
                 @method('put')
                 @csrf
                 <div class="card-body">
-                  <!-- <div class="form-group">
-                    <label for="supplier_id">Supplier</label>
-                    <select name="supplier_id" id="supplier" class="form-control">
-                    @foreach ($supplier as $item)
-                    
-                    <option value="{{ $item->id }}" 
-                    {{ $barang->supplier_id == $item->id ? 'selected' : '' }}>{{ $item->nama }}</option>
-
-                    @endforeach
-                        
-                    </select>
-                  </div> -->
                   <div class="form-group">
                     <label for="barcode">Barcode</label>
                     <input type="text" name="barcode" class="form-control" id="barcode" required 
@@ -52,13 +40,13 @@
                     <label for="nama">Nama</label>
                     <input type="text" name="nama" class="form-control" id="nama" required value="{{ $barang->nama}}">
                   </div>
-                  <!-- <div class="form-group">
-                    <label for="satuan">Satuan</label>
-                    <select name="satuan" id="satuan" class="form-control">
-                        <option value="pcs" {{ $barang->satuan == 'pcs' ? 'selected' : '' }}>PCS</option>
-                        <option value="pck" {{ $barang->satuan == 'pck' ? 'selected' : '' }}>PCK</option>
+                  <div class="form-group">
+                    <label for="type">Jenis Barang</label>
+                    <select name="type" id="type" class="form-control">
+                        <option value="konsumsi" {{ $barang->type == 'konsumsi' ? 'selected' : '' }}>Konsumsi</option>
+                        <option value="pembersih" {{ $barang->type == 'pembersih' ? 'selected' : '' }}>Pembersih</option>
                     </select>
-                  </div> -->
+                  </div>
                   <div class="form-group">
                     <label for="stok">Stok</label>
                     <input type="text" name="stok" class="form-control" id="stok" required value="{{ $barang->stok}}">

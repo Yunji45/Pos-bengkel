@@ -40,7 +40,7 @@
                 <table class="table table-bordered table-striped table-hover table-sm" id="datatable">
                   <thead class="bg-primary">                  
                     <tr>
-                      <th style="width: 10px">#</th>
+                      <th style="width: 10px">No</th>
                       <th>Barcode</th>
                       <th>Nama</th>
                       <th>Stok</th>

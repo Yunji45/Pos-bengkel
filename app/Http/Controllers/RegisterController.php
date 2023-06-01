@@ -43,7 +43,7 @@ class RegisterController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash :: make($request->password);
-        $user->role = 'customer';
+        $user->role = 'kasir';
         $user->save ();
         return redirect('/')->with('Berhasil', 'Silahkan login menggunakan email dan password');
     }

@@ -15,12 +15,9 @@ class CreateBarangsTable extends Migration
     {
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('supplier_id');
-            // $table->foreign('supplier_id')->references('id')->on('supplier');
             $table->string('barcode', 100);
             $table->string('nama', 100);
-            $table->enum('type',['produk','service']);
-            // $table->enum('satuan', ['pcs', 'pck']);
+            $table->enum('type',['konsumsi','pembersih']);
             $table->integer('stok')->nullable();
             $table->integer('harga_beli')->nullable();
             $table->integer('harga_jual')->nullable();

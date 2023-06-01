@@ -45,8 +45,4 @@ class User extends Authenticatable
         return $this->hasMany(Penjualan::class);
     }
 
-    public function service()
-    {
-        return $this->hasMany(customer::class);
-    }
 }

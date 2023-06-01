@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Barang;
 use App\Imports\BarangImport;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Supplier;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -18,7 +17,7 @@ class BarangController extends Controller
     public function index()
     {
         $title = 'Barang';
-        $barang = Barang:: where('type','produk')->orderBy('id', 'asc')->get();
+        $barang = Barang::orderBy('id', 'asc')->get();
         return view('barang.index', compact('title', 'barang'));
     }
 
@@ -30,8 +29,7 @@ class BarangController extends Controller
     public function create()
     {
         $title = 'Barang';
-        $supplier = Supplier::all();
-        return view('barang.create', compact('title', 'supplier'));
+        return view('barang.create', compact('title'));
     }
 
     /**
@@ -42,7 +40,25 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        Barang::create($request->all());
+        // Barang::create($request->all());
+        $request->validate([
+            'barcode' => 'required',
+            'nama' => 'required',
+            'type' => 'required',
+            'stok' => 'required',
+            'harga_beli' => 'required',
+            'harga_jual' => 'required',
+            'profit' => 'required'
+        ]);
+        $barang = new Barang;
+        $barang->barcode = $request->barcode;
+        $barang->nama = $request->nama;
+        $barang->type= $request->type;
+        $barang->stok = $request->stok;
+        $barang->harga_beli = $request->harga_beli;
+        $barang->harga_jual = $request->harga_jual;
+        $barang->profit = $request->profit;
+        $barang->save();
         return redirect('/barang')->with('success', 'Data Barang Berhasil Tersimpan');
 
     }
@@ -67,9 +83,8 @@ class BarangController extends Controller
     public function edit($id)
     {
         $title = 'Barang';
-        $supplier = Supplier::all();
         $barang = Barang::find($id);
-        return view('barang.edit', compact('title', 'supplier', 'barang'));
+        return view('barang.edit', compact('title', 'barang'));
     }
 
     /**
@@ -82,11 +97,9 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         $barang = Barang::find($id);
-        // $barang->supplier_id = $request->supplier_id;
         $barang->barcode = $request->barcode;
         $barang->nama = $request->nama;
-        $barang->type= 'produk';
-        // $barang->satuan = $request->satuan;
+        $barang->type= $request->type;
         $barang->stok = $request->stok;
         $barang->harga_beli = $request->harga_beli;
         $barang->harga_jual = $request->harga_jual;
@@ -115,8 +128,8 @@ class BarangController extends Controller
                 'file' => 'mimes:xls,xlxs,csv'
             ]
         );
-       $file = $request->file('file');
-       Excel::import(new BarangImport, $file);   
+        $file = $request->file('file');
+        Excel::import(new BarangImport, $file);   
         return redirect('/barang')->with('success', 'Data Barang Berhasil Terimport');
     }
 }

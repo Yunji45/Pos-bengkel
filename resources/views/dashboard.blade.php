@@ -64,7 +64,7 @@
             <div class="small-box bg-warning">
               <div class="inner">
                 <h3>
-                  <span id="supplier">0</span>
+                  <span id="supplier">0</span> pcs
                 </h3>
 
                 <p>Total Penjualan</p>
@@ -81,7 +81,7 @@
             <div class="small-box bg-danger">
               <div class="inner">
                 <h3>
-                  <span id="barang">0</span>
+                  <span id="barang">0</span> produk
                 </h3>
 
                 <p>Total Barang</p>

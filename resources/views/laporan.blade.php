@@ -39,9 +39,9 @@
                       <th>Kasir</th>
                       <th>No Invoice</th>
                       <th>Nama Barang</th>
-                      <th>QTY</th>
+                      <th>Jumlah Terjual</th>
                       <th>Total Harga</th>
-                      <th>Tanggal</th>
+                      <th>Tanggal Transaksi</th>
                     </tr>
                   </thead>
                   <tbody>

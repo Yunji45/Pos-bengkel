@@ -30,17 +30,6 @@
               <form action="/barang" method="POST">
                 @csrf
                 <div class="card-body">
-                  <!-- <div class="form-group">
-                    <label for="supplier_id">Supplier</label>
-                    <select name="supplier_id" id="supplier" class="form-control">
-                    @foreach ($supplier as $item)
-                    
-                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
-
-                    @endforeach
-                        
-                    </select>
-                  </div> -->
                   <div class="form-group">
                     <label for="barcode">Barcode</label>
                     <input type="text" name="barcode" class="form-control" id="barcode" required>
@@ -49,13 +38,13 @@
                     <label for="nama">Nama</label>
                     <input type="text" name="nama" class="form-control" id="nama" required>
                   </div>
-                  <!-- <div class="form-group">
-                    <label for="satuan">Satuan</label>
-                    <select name="satuan" id="satuan" class="form-control">
-                        <option value="pcs">PCS</option>
-                        <option value="pck">PCK</option>
+                  <div class="form-group">
+                    <label for="type">Satuan</label>
+                    <select name="type" id="type" class="form-control">
+                        <option value="konsumsi">Konsumsi</option>
+                        <option value="pembersih">Pembersih</option>
                     </select>
-                  </div> -->
+                  </div>
                   <div class="form-group">
                     <label for="stok">Stok</label>
                     <input type="text" name="stok" class="form-control" id="stok" required>
